@@ -1,0 +1,35 @@
+
+# dependencies
+node_modules/
+
+# env files
+.env
+.env.local
+.env.development.local
+.env.production.local
+
+# logs
+logs
+*.log
+npm-debug.log*
+
+# build files
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# editor files
+.vscode/
+.idea/
+
+# Vercel
+.vercel/
+
+# Render
+.render/
+
+# coverage
+coverage/

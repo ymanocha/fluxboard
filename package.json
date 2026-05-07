@@ -1,0 +1,13 @@
+{
+  "name": "fluxboard",
+  "version": "1.0.0",
+  "description": "Real-time collaborative Kanban board",
+  "scripts": {
+    "server": "npm run dev --prefix server",
+    "client": "npm run dev --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
