@@ -25,7 +25,7 @@ export const SocketProvider = ({ children }) => {
       socketRef.current.disconnect();
     }
 
-    const s = io('http://localhost:5000', {
+    const s = io(import.meta.env.VITE_SOCKET_URL, {
       auth: { token: accessToken },
       reconnectionAttempts: 5,
     });
