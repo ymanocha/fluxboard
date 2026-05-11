@@ -22,12 +22,18 @@ const app = express();
 // Middleware
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: [process.env.CLIENT_URL, 'http://localhost:5173', 'http://localhost:3000'].filter(Boolean),
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
   })
 );
 app.use(express.json());
+
+// Root route
+app.get('/', (req, res) => {
+  res.json({ message: 'Fluxboard Backend is running!', health: '/api/health' });
+});
 
 // Routes
 app.use('/api/auth', authRoutes);
@@ -57,7 +63,7 @@ const httpServer = http.createServer(app);
 const { Server } = require('socket.io');
 const io = new Server(httpServer, {
   cors: {
-    origin: process.env.CLIENT_URL,
+    origin: [process.env.CLIENT_URL, 'http://localhost:5173', 'http://localhost:3000'].filter(Boolean),
     methods: ['GET', 'POST'],
   },
 });
